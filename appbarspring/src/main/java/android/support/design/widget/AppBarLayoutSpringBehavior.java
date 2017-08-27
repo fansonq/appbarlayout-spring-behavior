@@ -447,6 +447,9 @@ public class AppBarLayoutSpringBehavior extends AppBarLayout.Behavior {
     }
 
     private void updateSpringHeaderHeight(CoordinatorLayout coordinatorLayout, AppBarLayout appBarLayout, int offset) {
+        if (mPreHeadHeight==0){
+            mPreHeadHeight = getHeaderExpandedHeight(appBarLayout);
+        }
         if (appBarLayout.getHeight() < mPreHeadHeight || offset < 0) return;
         mOffsetSpring = offset;
         if (mSpringOffsetCallback != null) mSpringOffsetCallback.springCallback(mOffsetSpring);
